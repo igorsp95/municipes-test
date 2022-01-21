@@ -1,0 +1,2 @@
+class Cidadao < ApplicationRecord
+end
