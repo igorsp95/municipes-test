@@ -51,6 +51,9 @@
           collection: [['Ativo', true], ['Inativo', false]] %>
       </div>
     </div>
+    <div>
+      <%= f.input :photo, as: :file %>
+    </div>
     <%= f.fields_for :endereco do |ff| %>
       <h4>Endereço</h4>
       <div class="row g-3">
