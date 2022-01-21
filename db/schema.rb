@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_193205) do
+ActiveRecord::Schema.define(version: 2022_01_21_194707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 2022_01_21_193205) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "enderecos", force: :cascade do |t|
+    t.string "cep"
+    t.string "logradouro"
+    t.string "complemento"
+    t.string "bairro"
+    t.string "cidade"
+    t.string "uf"
+    t.integer "codigo_ibge"
+    t.bigint "cidadao_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cidadao_id"], name: "index_enderecos_on_cidadao_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,4 +53,5 @@ ActiveRecord::Schema.define(version: 2022_01_21_193205) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "enderecos", "cidadaos"
 end
