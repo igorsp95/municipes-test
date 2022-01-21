@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(version: 2022_01_21_211734) do
   end
 
   create_table "cidadaos", force: :cascade do |t|
-    t.string "nome_completo"
+    t.string "nome"
+    t.string "sobrenome"
     t.string "cpf"
     t.string "cns"
     t.string "email"

@@ -20,8 +20,8 @@
       <% @cidadaos.each do |cidadao| %>
           <tr onclick="location.href='<%= cidadao_path(cidadao) %>'">
               <th scope="row"></th>
-                <td><%= cidadao.nome_completo %></td>
-                <td><%= (CPF.new(cidadao.cpf).formatted) %></td>
+                <td><%= cidadao.nome %> <%= cidadao.sobrenome %></td>
+                <td><%= cidadao.cpf %></td>
                 <td><%= (cidadao.cns) %></td>
                 <td><%= l(cidadao.data_nascimento, format: :default) %></td>
                 <td><%= cidadao.status? ? 'Ativo' : 'Inativo' %></th>

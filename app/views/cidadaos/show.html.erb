@@ -11,7 +11,7 @@
           <%= cl_image_tag @cidadao.photo.key, height: 300, width: 300, crop: :fill %>
         </div>
       <div class="row row-cols-3">
-        <div class="col"><h5>Nome Completo</h5><p><%= @cidadao.nome_completo %></p></div>
+        <div class="col"><h5>Nome Completo</h5><p><%= @cidadao.nome %> <%= @cidadao.sobrenome %></p></div>
         <div class="col"><h5>CPF</h5><p><%= @cidadao.cns %></p></div>
         <div class="col"><h5>CNS</h5><p><%= @cidadao.cns %></p></div>
       </div>

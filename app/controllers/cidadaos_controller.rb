@@ -2,7 +2,7 @@ class CidadaosController < ApplicationController
   before_action :set_cidadao, only: [:show, :edit, :update]
 
   def index
-    @cidadaos = Cidadao.order('nome_completo').all
+    @cidadaos = Cidadao.order('nome').all
   end
 
   def show
@@ -39,6 +39,6 @@ class CidadaosController < ApplicationController
   end
 
   def cidadao_params
-    params.require(:cidadao).permit(:nome_completo, :cpf, :cns, :email, :data_nascimento, :telefone, :status, :photo, endereco_attributes: [:id, :cep, :logradouro, :complemento, :bairro, :cidade, :uf])
+    params.require(:cidadao).permit(:nome, :sobrenome, :cpf, :cns, :email, :data_nascimento, :telefone, :status, :photo, endereco_attributes: [:id, :cep, :logradouro, :complemento, :bairro, :cidade, :uf])
   end
 end

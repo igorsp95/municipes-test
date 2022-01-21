@@ -2,12 +2,18 @@
   <h4>Dados pessoais</h4>
     <div class="row">
       <div class="col-12">
-        <%= f.input :nome_completo,
-                    placeholder: "Nome completo",
+        <%= f.input :nome,
+                    placeholder: "Nome",
                     class: "form-completo",
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "nome_completo" } %>
+                    input_html: { autocomplete: "nome" } %>
+        <%= f.input :sobrenome,
+                    placeholder: "sobrenome completo",
+                    class: "form-completo",
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "sobrenome" } %>                    
       </div>
       <div class="col-4">
         <%= f.input :data_nascimento, as: :string ,
