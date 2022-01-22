@@ -2,7 +2,11 @@ class CidadaosController < ApplicationController
   before_action :set_cidadao, only: [:show, :edit, :update]
 
   def index
-    @cidadaos = Cidadao.order('nome').all
+    if params[:query].present?
+      @cidadaos = Cidadao.buscar_por_dados_ou_endereco(params[:query])
+    else
+      @cidadaos = Cidadao.order('nome').all
+    end
   end
 
   def show
@@ -26,11 +30,16 @@ class CidadaosController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     if @cidadao.update(cidadao_params)
       redirect_to cidadao_path(@cidadao)
+      flash[:notice] = 'Munícipe atualizado com sucesso.'
     else
       render :edit
+      flash[:notice] = 'Algo deu errado. Tente novamente mais tarde.'
     end
   end
 
@@ -47,6 +56,6 @@ class CidadaosController < ApplicationController
   end
 
   def cidadao_params
-    params.require(:cidadao).permit(:nome, :sobrenome, :cpf, :cns, :email, :data_nascimento, :telefone, :status, :photo, endereco_attributes: [:id, :cep, :logradouro, :complemento, :bairro, :cidade, :uf])
+    params.require(:cidadao).permit(:nome, :sobrenome, :cpf, :cns, :email, :data_nascimento, :telefone, :status, :photo, endereco_attributes: [:cep, :logradouro, :complemento, :bairro, :cidade, :uf])
   end
 end

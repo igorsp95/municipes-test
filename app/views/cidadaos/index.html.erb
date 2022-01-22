@@ -1,32 +1,32 @@
-<div class="container">
-  <div class="d-flex justify-content-around align-items-center mb-3">
-    <div class="p-2"><h1 class="text-center mt-2">MUNÍCIPES</h1></div>
-    <div class="p-2"><a class="btn btn-home" href="/cidadaos/new" role="button">Novo Munícipe</a></div>
+<div class="my-card-index">
+  <h1>Lista de Munícipes</h1>
+  <div class="justify-between mt-4 mb-2">
+    <%= form_tag(cidadaos_path, method: :get) do %>
+      <%= text_field_tag :query,
+                params[:query],
+                as: :nome
+              %>
+      <%= submit_tag "Buscar", class: "button-orange-sm", remote: true %>        
+    <% end %>
+    <a class="simple-button" href="/cidadaos/new" role="button">Novo Munícipe</a>
   </div>
-
-  <table class="table table-hover">
+  <table class="styled-table-index">
     <thead>
       <tr>
-        <th scope="col"></th>
-        <th scope="col">Nome Completo</th>
-        <th scope="col">CPF</th>
-        <th scope="col">CNS</th>
-        <th scope="col">Data de Nascimento</th>
-        <th scope="col">Status</th>
-        <th></th>
+        <th>Nome Completo</th>
+        <th>CPF</th>
+        <th>CNS</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <% @cidadaos.each do |cidadao| %>
-          <tr onclick="location.href='<%= cidadao_path(cidadao) %>'">
-              <th scope="row"></th>
-                <td><%= cidadao.nome %> <%= cidadao.sobrenome %></td>
-                <td><%= cidadao.cpf.unpack('A3A3A3A2').join('-') %></td>
-                <td><%= (cidadao.cns) %></td>
-                <td><%= cidadao.data_nascimento.strftime("%d/%m/%y") %></td>
-                <td><%= cidadao.status? ? 'Ativo' : 'Inativo' %></th>
-                <td></td>
-          </tr>
+        <tr onclick="location.href='<%= cidadao_path(cidadao) %>'">
+          <td><%= cidadao.nome %> <%= cidadao.sobrenome %></td>
+          <td><%= cidadao.cpf.unpack('A3A3A3A2').join('-') %></td>
+          <td><%= (cidadao.cns) %></td>
+          <td><%= cidadao.status? ? 'Ativo' : 'Inativo' %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>

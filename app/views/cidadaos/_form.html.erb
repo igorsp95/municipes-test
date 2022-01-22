@@ -1,145 +1,151 @@
-<%= simple_form_for @cidadao, url: url_path do |f| %>
-  <h4>Dados pessoais</h4>
-    <div class="row">
-      <div class="col-12">
-        <%= f.input :nome,
-                    placeholder: "Nome",
-                    class: "form-completo",
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "nome" } %>
-        <%= f.input :sobrenome,
-                    placeholder: "sobrenome completo",
-                    class: "form-completo",
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "sobrenome" } %>                    
-      </div>
-      <div class="col-4">
-        <%= f.input :data_nascimento, as: :string ,
-                    class: "form-pequeno",
-                    required: true,
-                    input_html: { type: 'date', autocomplete: "data_nascimento" } %>
-      </div>
-      <div class="col-4">
-        <%= f.input :cpf,
-          placeholder: "555.555.555-55",
-          required: true,
-          size: 11,
-          input_html: { autocomplete: "cpf" } %>
-      </div>
-      <div class="col-4">
-        <%= f.input :cns,
-          placeholder: "555 5555 5555 5555",
-          required: true,
-          size: 15,
-          input_html: { autocomplete: "cns"} %>
-      </div>
-      <div class="col-7">
-        <%= f.input :email,
-                    placeholder: "E-mail",
-                    class: "form-completo",
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-      </div>
-      <div class="col-1">
-      </div>
-      <div class="col-4">
-        <%= f.input :telefone,
-          placeholder: "(00) 0000-0000",
-          required: true,
-          input_html: { autocomplete: "telefone", class:'telefone-masked'  } %>
-      </div>
-      <div class="col-6">
-        <%= f.input :status, as: :radio_buttons,
-          include_blank: false,
-          collection: [['Ativo', true], ['Inativo', false]] %>
-      </div>
-    </div>
-    <div>
-      <%= f.input :photo, as: :file %>
-    </div>
-    <%= f.fields_for :endereco do |ff| %>
-      <h4>Endereço</h4>
-      <div class="row g-3">
-        <div class="col-md-4">
-          <%= ff.input :cep,
-                      placeholder: "09555-555",
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "cep", class:'cep-masked cep' } %>
-        </div>
-        <div class="col-md-2">
-          <%= ff.input :uf, collection: [["AC"],
-                                        ["AL"],
-                                        ["AP"],
-                                        ["AM"],
-                                        ["BA"],
-                                        ["CE"],
-                                        ["DF"],
-                                        ["ES"],
-                                        ["GO"],
-                                        ["MA"],
-                                        ["MT"],
-                                        ["MS"],
-                                        ["MG"],
-                                        ["PA"],
-                                        ["PB"],
-                                        ["PR"],
-                                        ["PE"],
-                                        ["PI"],
-                                        ["RJ"],
-                                        ["RN"],
-                                        ["RS"],
-                                        ["RO"],
-                                        ["RR"],
-                                        ["SC"],
-                                        ["SP"],
-                                        ["SE"],
-                                        ["TO"]],
-                      label_method: :first, value_method: :first,
-                      class: "form-pequeno",
-                      placeholder: "",
-                      required: true,
-                      input_html: { autocomplete: "uf" } %>
-        </div>
-        <div class="col-6">
-          <%= ff.input :cidade,
-                      id: "cidade",
-                      placeholder: "",
+<div class="my-card-show">
+  <div class="justify-between mb-2">
+    <a class="simple-button" href="/cidadaos/" role="button">Lista de Munícipes</a>
+  </div>
+  <%= simple_form_for @cidadao, url: url_path do |f| %>
+    <h2 class="mb-4">Dados pessoais</h2>
+      <div class="row">
+        <div class="col-4">
+          <%= f.input :nome,
+                      placeholder: "nome",
                       class: "form-completo",
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "cidade" } %>
+                      input_html: { autocomplete: "nome" } %>
         </div>
-        <div class="col-12">
-          <%= ff.input :logradouro,
-                      id: "logradouro",
+        <div class="col-8">
+          <%= f.input :sobrenome,
+                      placeholder: "sobrenome completo",
                       class: "form-completo",
-                      placeholder: "Rua, Av., Trav.",
                       required: true,
-                      input_html: { autocomplete: "logradouro" } %>
+                      autofocus: true,
+                      input_html: { autocomplete: "sobrenome" } %>                    
         </div>
-        <div class="col-6">
-          <%= ff.input :complemento,
-                      id: "complemento",
-                      class: "form-pequeno",
-                      placeholder: "Apto., Bloco",
-                      required: true,
-                      input_html: { autocomplete: "complemento" } %>        
-        </div>
-        <div class="col-6">
-          <%= ff.input :bairro ,
-                      id: "bairro",
+        <div class="col-4">
+          <%= f.input :data_nascimento, as: :string ,
                       class: "form-pequeno",
                       required: true,
-                      input_html: { autocomplete: "bairro" } %>
+                      input_html: { type: 'date', autocomplete: "data_nascimento" } %>
         </div>
-      </div>
-    <% end %>
+        <div class="col-4">
+          <%= f.input :cpf,
+            placeholder: "seu cpf",
+            required: true,
+            size: 11,
+            input_html: { autocomplete: "cpf" } %>
+        </div>
+        <div class="col-4">
+          <%= f.input :cns,
+            placeholder: "seu cns",
+            required: true,
+            size: 15,
+            input_html: { autocomplete: "cns"} %>
+        </div>
+        <div class="col-7">
+          <%= f.input :email,
+                      placeholder: "seuemail@exemplo.com",
+                      class: "form-completo",
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+        </div>
+        <div class="col-5">
+          <%= f.input :telefone,
+            placeholder: "(00) 0000-0000",
+            required: true,
+            input_html: { autocomplete: "telefone", class:'telefone-masked'  } %>
+        </div>
+        <div class="col-6 mt-5">
+          <%= f.collection_radio_buttons :status, [[true, 'Ativo'] ,[false, 'Inativo']],:first, :last %> 
 
-    <div class="form-actions">
-      <%= f.button :submit, "Adicionar munícipe", class:"btn-home" %>
-    </div>
-<% end %>
+
+        </div>
+        <div class="col-6">
+          <%= f.input :photo, as: :file %>
+        </div>
+      </div>
+      <hr class="my-5">
+      <div>
+        <%= f.fields_for :endereco do |ff| %>
+          <h2 class="mb-4">Endereço</h2>
+          <div class="row g-3">
+            <div class="col-md-2">
+              <%= ff.input :cep,
+                          placeholder: "seu cep",
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "cep", class:'cep-masked cep' } %>
+            </div>
+            <div class="col-md-2">
+              <%= ff.input :uf, collection: [["AC"],
+                                            ["AL"],
+                                            ["AP"],
+                                            ["AM"],
+                                            ["BA"],
+                                            ["CE"],
+                                            ["DF"],
+                                            ["ES"],
+                                            ["GO"],
+                                            ["MA"],
+                                            ["MT"],
+                                            ["MS"],
+                                            ["MG"],
+                                            ["PA"],
+                                            ["PB"],
+                                            ["PR"],
+                                            ["PE"],
+                                            ["PI"],
+                                            ["RJ"],
+                                            ["RN"],
+                                            ["RS"],
+                                            ["RO"],
+                                            ["RR"],
+                                            ["SC"],
+                                            ["SP"],
+                                            ["SE"],
+                                            ["TO"]],
+                          label_method: :first, value_method: :first,
+                          class: "form-pequeno",
+                          placeholder: "",
+                          required: true,
+                          input_html: { autocomplete: "uf" } %>
+            </div>
+            <div class="col-4">
+              <%= ff.input :cidade,
+                          id: "cidade",
+                          placeholder: "sua cidade",
+                          class: "form-completo",
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "cidade" } %>
+            </div>
+            <div class="col-4">
+              <%= ff.input :bairro ,
+                          id: "bairro",
+                          placeholder: "seu bairro",
+                          class: "form-pequeno",
+                          required: true,
+                          input_html: { autocomplete: "bairro" } %>
+            </div>
+            <div class="col-6">
+              <%= ff.input :logradouro,
+                          id: "logradouro",
+                          class: "form-completo",
+                          placeholder: "seu logradouro",
+                          required: true,
+                          input_html: { autocomplete: "logradouro" } %>
+            </div>
+            <div class="col-6">
+              <%= ff.input :complemento,
+                          id: "complemento",
+                          class: "form-pequeno",
+                          placeholder: "complemento (se existir)",
+                          required: true,
+                          input_html: { autocomplete: "complemento" } %>        
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <%= f.submit "Adicionar munícipe", class:"button-orange mt-2" %>
+  <% end %>
+</div>
