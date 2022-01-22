@@ -6,7 +6,7 @@
         <%= image_tag "avatar-img.png", style:'height: 150px; width: 150px; border-radius: 50%;' %>
     <% end %>
     <hr>
-    <p><%= @cidadao.nome.capitalize %> <%= @cidadao.sobrenome.capitalize %></p>
+    <p><%= @cidadao.nome.titleize %> <%= @cidadao.sobrenome.titleize %></p>
 
     <table class="styled-table-vertical">
       <tr>
@@ -34,7 +34,7 @@
   <table class="styled-table-show">
       <tr>
         <th>Nome Completo:</th>
-        <td><%= @cidadao.nome %> <%= @cidadao.sobrenome %></td>
+        <td><%= @cidadao.nome.titleize %> <%= @cidadao.sobrenome.titleize %></td>
       </tr>
       <tr>
         <th>CPF:</th>

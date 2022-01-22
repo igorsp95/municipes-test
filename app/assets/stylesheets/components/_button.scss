@@ -1,11 +1,12 @@
 .simple-button:link, .simple-button:visited  {
   text-decoration: underline;
-  color: #f0f0f0;
+  color: #ecececcc;
   transition: color 0.2s ease;
+  font-size: 14px;
 }
 
 .simple-button:hover {
-  color: rgb(253, 253, 253);
+  color: #ecececfb;
 }
 
 .button-orange-sm {

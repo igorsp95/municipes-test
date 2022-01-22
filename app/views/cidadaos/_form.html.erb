@@ -8,7 +8,6 @@
         <div class="col-4">
           <%= f.input :nome,
                       placeholder: "nome",
-                      class: "form-completo",
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "nome" } %>
@@ -16,14 +15,12 @@
         <div class="col-8">
           <%= f.input :sobrenome,
                       placeholder: "sobrenome completo",
-                      class: "form-completo",
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "sobrenome" } %>                    
         </div>
         <div class="col-4">
           <%= f.input :data_nascimento, as: :string ,
-                      class: "form-pequeno",
                       required: true,
                       input_html: { type: 'date', autocomplete: "data_nascimento" } %>
         </div>
@@ -44,7 +41,6 @@
         <div class="col-7">
           <%= f.input :email,
                       placeholder: "seuemail@exemplo.com",
-                      class: "form-completo",
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "email" } %>
@@ -56,7 +52,7 @@
             input_html: { autocomplete: "telefone", class:'telefone-masked'  } %>
         </div>
         <div class="col-6 mt-5">
-          <%= f.collection_radio_buttons :status, [[true, 'Ativo'] ,[false, 'Inativo']],:first, :last %> 
+          <%= f.collection_radio_buttons :status, [[true, 'Ativo'] ,[false, 'Inativo']],:first, :last, required: true %> 
 
 
         </div>
@@ -105,7 +101,6 @@
                                             ["SE"],
                                             ["TO"]],
                           label_method: :first, value_method: :first,
-                          class: "form-pequeno",
                           placeholder: "",
                           required: true,
                           input_html: { autocomplete: "uf" } %>
@@ -114,7 +109,6 @@
               <%= ff.input :cidade,
                           id: "cidade",
                           placeholder: "sua cidade",
-                          class: "form-completo",
                           required: true,
                           autofocus: true,
                           input_html: { autocomplete: "cidade" } %>
@@ -130,22 +124,27 @@
             <div class="col-6">
               <%= ff.input :logradouro,
                           id: "logradouro",
-                          class: "form-completo",
                           placeholder: "seu logradouro",
                           required: true,
                           input_html: { autocomplete: "logradouro" } %>
             </div>
-            <div class="col-6">
+            <div class="col-3">
               <%= ff.input :complemento,
                           id: "complemento",
-                          class: "form-pequeno",
                           placeholder: "complemento (se existir)",
+                          required: true,
+                          input_html: { autocomplete: "complemento" } %>        
+            </div>
+            <div class="col-3">
+              <%= ff.input :codigo_ibge,
+                          id: "codigo_ibge",
+                          placeholder: "seu código ibge",
                           required: true,
                           input_html: { autocomplete: "complemento" } %>        
             </div>
           </div>
         <% end %>
       </div>
-    <%= f.submit "Adicionar munícipe", class:"button-orange mt-2" %>
+    <%= f.submit "Adicionar Munícipe", class:"button-orange mt-2" %>
   <% end %>
 </div>
