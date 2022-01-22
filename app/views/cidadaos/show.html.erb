@@ -12,11 +12,11 @@
         </div>
       <div class="row row-cols-3">
         <div class="col"><h5>Nome Completo</h5><p><%= @cidadao.nome %> <%= @cidadao.sobrenome %></p></div>
-        <div class="col"><h5>CPF</h5><p><%= @cidadao.cns %></p></div>
+        <div class="col"><h5>CPF</h5><p><%= @cidadao.cpf.unpack('A3A3A3A2').join('-') %></p></div>
         <div class="col"><h5>CNS</h5><p><%= @cidadao.cns %></p></div>
       </div>
       <div class="row row-cols-3">
-        <div class="col"><h5>Data de Nascimento</h5><p><%= l(@cidadao.data_nascimento, format: :default) %></p></div>
+        <div class="col"><h5>Data de Nascimento</h5><p><%= @cidadao.data_nascimento.strftime("%d/%m/%y") %></p></div>
         <div class="col"><h5>Telefone</h5><p><%= @cidadao.telefone %></p></div>
         <div class="col"><h5>E-mail</h5><p><%= @cidadao.email %></p></div>
       </div>

@@ -21,9 +21,9 @@
           <tr onclick="location.href='<%= cidadao_path(cidadao) %>'">
               <th scope="row"></th>
                 <td><%= cidadao.nome %> <%= cidadao.sobrenome %></td>
-                <td><%= cidadao.cpf %></td>
+                <td><%= cidadao.cpf.unpack('A3A3A3A2').join('-') %></td>
                 <td><%= (cidadao.cns) %></td>
-                <td><%= l(cidadao.data_nascimento, format: :default) %></td>
+                <td><%= cidadao.data_nascimento.strftime("%d/%m/%y") %></td>
                 <td><%= cidadao.status? ? 'Ativo' : 'Inativo' %></th>
                 <td></td>
           </tr>
