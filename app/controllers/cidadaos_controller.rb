@@ -22,9 +22,17 @@ class CidadaosController < ApplicationController
 
   def create
     @cidadao = Cidadao.new(cidadao_params)
-
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
     if @cidadao.save
+      @client.messages.create(       
+                            messaging_service_sid: 'MGda2782dac34791e45af2ccd26e6f8ec4',   
+                            to: "+55#{@cidadao.telefone}",
+                            body: 'Você foi cadastrado na plataforma de munícipes.'
+                            ) 
       redirect_to cidadao_path(@cidadao)
+      flash[:notice] = 'Email e sms de confirmação enviados ao munícipe.'
     else
       render :new
     end
