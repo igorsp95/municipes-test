@@ -11,8 +11,6 @@ class CidadaosController < ApplicationController
 
   def show
     @endereco = @cidadao.endereco
-    @cpf = @cidadao.cpf
-    @cpf_formated = formatar_cpf(@cpf)
   end
 
   def new
@@ -30,7 +28,8 @@ class CidadaosController < ApplicationController
                             messaging_service_sid: 'MGda2782dac34791e45af2ccd26e6f8ec4',   
                             to: "+55#{@cidadao.telefone}",
                             body: 'Você foi cadastrado na plataforma de munícipes.'
-                            ) 
+                            )
+    CidadaoMailer.with(cidadao: @cidadao).email_cadastro.deliver_now                      
       redirect_to cidadao_path(@cidadao)
       flash[:notice] = 'Email e sms de confirmação enviados ao munícipe.'
     else
@@ -42,7 +41,16 @@ class CidadaosController < ApplicationController
   end
 
   def update
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
     if @cidadao.update(cidadao_params)
+      @client.messages.create(       
+                            messaging_service_sid: 'MGda2782dac34791e45af2ccd26e6f8ec4',   
+                            to: "+55#{@cidadao.telefone}",
+                            body: 'Seu cadastro foi atualizado na plataforma Munícipes. Por favor, cheque suas informações no seu email. Obrigado.'
+                            )
+      CidadaoMailer.with(cidadao: @cidadao).email_cadastro.deliver_now
       redirect_to cidadao_path(@cidadao)
       flash[:notice] = 'Munícipe atualizado com sucesso.'
     else
@@ -53,12 +61,6 @@ class CidadaosController < ApplicationController
 
   private
   
-  def formatar_cpf(cpf)
-    # cpf = @cidadao.cpf
-    cpf_format = cpf.split('')
-    new_cpf = "#{cpf_format[0]}#{cpf_format[1]}#{cpf_format[2]}.#{cpf_format[3]}#{cpf_format[4]}#{cpf_format[5]}.#{cpf_format[6]}#{cpf_format[7]}#{cpf_format[8]}-#{cpf_format[9]}#{cpf_format[10]}"
-  end
-
   def set_cidadao
     @cidadao = Cidadao.find(params[:id])
   end

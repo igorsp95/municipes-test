@@ -6,11 +6,11 @@ class Cidadao < ApplicationRecord
   validates :nome, presence: true
   validates :sobrenome, presence: true
   validates :cpf, length: { is: 11 }, presence: true, uniqueness: true
-  validates :cns, length: { is: 15 }
+  validates :cns, length: { is: 15 }, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :telefone, length: { minimum: 10 }
+  validates :telefone, presence: true, length: { minimum: 10 }, uniqueness: true
   validates :data_nascimento, presence: true
-  validates :status, inclusion: { in: [ true, false ] }
+  validates :status, inclusion: { in: [ true, false ] }, presence: true
 
 
   include PgSearch::Model
@@ -20,6 +20,6 @@ class Cidadao < ApplicationRecord
       endereco: [:cep, :logradouro, :complemento, :bairro, :cidade, :uf]
     },
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: true }
     }
 end
