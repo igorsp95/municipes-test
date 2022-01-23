@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "https://municipes-app-igor-parente.herokuapp.com/" }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
