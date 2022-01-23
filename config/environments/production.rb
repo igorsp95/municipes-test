@@ -1,4 +1,10 @@
 Rails.application.configure do
+  begin
+    require 'minitest/autorun'
+  rescue LoadError => e
+    raise e unless ENV['RAILS_ENV'] == "production"
+  end
+  
   config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
   # Settings specified here will take precedence over those in config/application.rb.
 
