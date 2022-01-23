@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Olá, <%= @cidadao.nome %>!</h1>
+    <p>
+      Suas informações de cadastro na plataforma Munícipes foi atualizada.
+    </p>
+    <br>
+    <p>
+      Confira abaixo se as suas informações estão corretas
+    </p>
+    <table style="width:100%">
+      <tr>
+        <th>Nome:</th>
+        <td><%= @cidadao.nome %> <%= @cidadao.sobrenome %></td>
+      </tr>
+      <tr>
+        <th>CPF:</th>
+        <td><%= @cidadao.cpf.unpack('A3A3A3A2').join('-') %></td>
+      </tr>
+      <tr>
+        <th>CNS:</th>
+        <td><%= @cidadao.cns %></td>
+      </tr>
+      <tr>
+        <th>Data de Nascimento:</th>
+        <td><%= @cidadao.data_nascimento.strftime("%d/%m/%y") %></td>
+      </tr>
+      <tr>
+        <th>Telefone:</th>
+        <td><%= @cidadao.telefone %></td>
+      </tr>
+      <tr>
+        <th>E-mail:</th>
+        <td><%= @cidadao.email %></td>
+      </tr>
+      <tr>
+        <th>Status:</th>
+        <td><%= @cidadao.status? ? 'Ativo' : 'Inativo' %></td>
+      </tr>
+    </table>
+    <p>Obrigado.</p>
+  </body>
+</html>
