@@ -24,11 +24,11 @@ class CidadaosController < ApplicationController
     auth_token = ENV['auth_token']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     if @cidadao.save
-      # @client.messages.create(       
-      #                       messaging_service_sid: 'MGda2782dac34791e45af2ccd26e6f8ec4',   
-      #                       to: "+55#{@cidadao.telefone}",
-      #                       body: 'Você foi cadastrado na plataforma de munícipes.'
-      #                       )
+      @client.messages.create(       
+                            messaging_service_sid: 'MGda2782dac34791e45af2ccd26e6f8ec4',   
+                            to: "+55#{@cidadao.telefone}",
+                            body: 'Você foi cadastrado na plataforma de munícipes.'
+                            )
     CidadaoMailer.with(cidadao: @cidadao).email_cadastro.deliver_now                      
       redirect_to cidadao_path(@cidadao)
       flash[:notice] = 'Email e sms de confirmação enviados ao munícipe.'
@@ -45,11 +45,11 @@ class CidadaosController < ApplicationController
     auth_token = ENV['auth_token']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     if @cidadao.update(cidadao_params)
-      # @client.messages.create(       
-      #                       messaging_service_sid: 'MGda2782dac34791e45af2ccd26e6f8ec4',   
-      #                       to: "+55#{@cidadao.telefone}",
-      #                       body: 'Seu cadastro foi atualizado na plataforma Munícipes. Por favor, cheque suas informações no seu email. Obrigado.'
-      #                       )
+      @client.messages.create(       
+                            messaging_service_sid: 'MGda2782dac34791e45af2ccd26e6f8ec4',   
+                            to: "+55#{@cidadao.telefone}",
+                            body: 'Seu cadastro foi atualizado na plataforma Munícipes. Por favor, cheque suas informações no seu email. Obrigado.'
+                            )
       CidadaoMailer.with(cidadao: @cidadao).email_cadastro_atualizado.deliver_now
       redirect_to cidadao_path(@cidadao)
       flash[:notice] = 'Munícipe atualizado com sucesso.'

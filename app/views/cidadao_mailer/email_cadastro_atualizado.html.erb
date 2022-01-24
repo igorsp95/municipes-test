@@ -15,12 +15,13 @@
   <body>
     <h1>Olá, <%= @cidadao.nome %>!</h1>
     <p>
-      Suas informações de cadastro na plataforma Munícipes foi atualizada.
+      Suas informações de cadastro na plataforma Munícipes foram atualizadas.
     </p>
     <br>
     <p>
-      Confira abaixo se as suas informações estão corretas
+      Por favor, confira abaixo se suas informações estão corretas.
     </p>
+    <br>
     <table style="width:100%">
       <tr>
         <th>Nome:</th>
@@ -51,6 +52,7 @@
         <td><%= @cidadao.status? ? 'Ativo' : 'Inativo' %></td>
       </tr>
     </table>
+    <br>
     <p>Obrigado.</p>
   </body>
 </html>

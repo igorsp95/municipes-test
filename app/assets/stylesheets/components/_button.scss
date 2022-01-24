@@ -9,6 +9,17 @@
   color: #ecececfb;
 }
 
+.simple-button-bg:link, .simple-button-bg:visited  {
+  text-decoration: underline;
+  color: #ecececcc;
+  transition: color 0.2s ease;
+  font-size: 16px;
+}
+
+.simple-button-bg:hover {
+  color: #ecececfb;
+}
+
 .button-orange-sm {
   align-items: center;
   background-clip: padding-box;
