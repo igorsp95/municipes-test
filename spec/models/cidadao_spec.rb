@@ -7,11 +7,11 @@ RSpec.describe Cidadao, type: :model do
       cidadao = Cidadao.new(
         nome: 'Igor',
         sobrenome: "Parente",
-        cpf: '11111111111',
-        cns: '111111111111111',
-        email: "exemplo@hotmail.com",
+        cpf: '11111111113',
+        cns: '111111111111113',
+        email: "exemplo3@hotmail.com",
         data_nascimento: Time.now,
-        telefone: "2121212121",
+        telefone: "2121212123",
         status: true) 
       expect(cidadao).to be_valid  # test code
     end

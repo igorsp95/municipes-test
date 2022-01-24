@@ -6,4 +6,5 @@ class Endereco < ApplicationRecord
   validates :cidade, presence: true
   validates :bairro, presence: true
   validates :uf, presence: true
+  validates :cidadao_id, presence: true
 end
