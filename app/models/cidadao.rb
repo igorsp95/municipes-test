@@ -8,6 +8,7 @@ class Cidadao < ApplicationRecord
   validates :cpf, length: { is: 11 }, presence: true, uniqueness: true
   validates :cns, length: { is: 15 }, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   validates :telefone, presence: true, length: { minimum: 10 }, uniqueness: true
   validates :data_nascimento, presence: true
   validates :status, inclusion: { in: [ true, false ] }, presence: true
