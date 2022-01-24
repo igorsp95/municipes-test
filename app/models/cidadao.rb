@@ -11,7 +11,7 @@ class Cidadao < ApplicationRecord
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   validates :telefone, presence: true, length: { minimum: 10 }, uniqueness: true
   validates :data_nascimento, presence: true
-  validates :status, inclusion: { in: [ true, false ] }, presence: true
+  validates :status, inclusion: { in: [ true, false ] }
 
 
   include PgSearch::Model
